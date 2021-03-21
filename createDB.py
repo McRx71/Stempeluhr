@@ -12,10 +12,10 @@ class createDB:
             connection = sqlite3.connect("timetable.db")
             cursor = connection.cursor()
             sql = "CREATE TABLE Chris(" \
-                  "weeknumber INTEGER, " \
+                  "weeknumber TEXT, " \
                   "dayofweek TEXT, " \
-                  "date TEXT, " \
-                  "time TEXT, " \
+                  "date DATE, " \
+                  "time REAL, " \
                   "task TEXT)"
 
             cursor.execute(sql)

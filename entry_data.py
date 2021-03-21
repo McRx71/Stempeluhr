@@ -3,10 +3,11 @@ from datetime import *
 
 class create_entry:
 
-    def __init__(self):
+    def __init__(self, time, task):
+        self.time = time
+        self.task = task
 
-
-    locale.setlocale(locale.LC_TIME, locale.normalize("de"))
+    #locale.setlocale(locale.LC_TIME, locale.normalize("de"))
 
     def dow(self):
         dayofweek = date.today().strftime('%A')
@@ -16,20 +17,20 @@ class create_entry:
         return weeknumber
     def date(self):
         return date.today().strftime("%d.%m.%Y")
-    # Verbindung zur Datenbank erzeugen
-    connection = sqlite3.connect("timetable.db")
-    # Datensatz-Cursor erzeugen
-    cursor = connection.cursor()
 
 
+    def write_data(self):
+        # Verbindung zur Datenbank erzeugen
+        connection = sqlite3.connect("timetable.db")
+        # Datensatz-Cursor erzeugen
+        cursor = connection.cursor()
+        # Datensatz erzeugen
+        sql = "INSERT INTO Chris VALUES(" + "'"+self.weeknr()+"'" + "," + "'"+self.dow()+"'"+","+ "'"+self.date()+"'"+","+"'"+ self.time+"'" + "," + "'"+self.task+"'" + ")"
+        cursor.execute(sql)
+        connection.commit()
 
-    # Datensatz erzeugen
-    sql = "INSERT INTO Chris VALUES(" + "'"+weeknr()+"'" + "," + "'"+dow()+"'"+")"
-    cursor.execute(sql)
-    connection.commit()
-
-    # Verbindung beenden
-    connection.close()
+        # Verbindung beenden
+        connection.close()
 
 
 #https://www.python-lernen.de/python-modul-datetime.htm
