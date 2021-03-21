@@ -4,14 +4,17 @@ import os
 
 
 def check_input():
+    check = False
     time = input('The Time it took: ')
-    while type(time) == int:
-            print('This must be an integer!')
-            time = input('The Time it took: ')
+    while check != True:
+        if type(time) == int:
+                print('This must be an integer!')
+                time = input('The Time it took: ')
+                return time
+        else:
+            check = True
+            print('None')
             return time
-    else:
-        print('None')
-        return time
 
 
 class Menu:
@@ -25,7 +28,7 @@ class Menu:
         menu_choice = input('What would you like to do?: ')
 
         if menu_choice == '1':
-            print('Create Entry')
+            #print('Create Entry')
             ce = create_entry(check_input(), input('The Task: '))
             ce.write_data()
         elif menu_choice == '2':
