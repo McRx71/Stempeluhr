@@ -16,6 +16,7 @@ class createDB:
                   "dayofweek TEXT, " \
                   "date DATE, " \
                   "time REAL, " \
-                  "task TEXT)"
+                  "task TEXT," \
+                  "FirstLevelSupport BOOLEAN)"
 
             cursor.execute(sql)

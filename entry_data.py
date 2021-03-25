@@ -3,9 +3,10 @@ from datetime import *
 
 class create_entry:
 
-    def __init__(self, time, task):
+    def __init__(self, task, time, fls):
         self.time = time
         self.task = task
+        self.fls = fls
 
     #locale.setlocale(locale.LC_TIME, locale.normalize("de"))
 
@@ -25,7 +26,7 @@ class create_entry:
         # Datensatz-Cursor erzeugen
         cursor = connection.cursor()
         # Datensatz erzeugen
-        sql = "INSERT INTO Chris VALUES(" + "'"+self.weeknr()+"'" + "," + "'"+self.dow()+"'"+","+ "'"+self.date()+"'"+","+"'"+ self.time+"'" + "," + "'"+self.task+"'" + ")"
+        sql = "INSERT INTO Chris VALUES(" + "'"+self.weeknr()+"'" + "," + "'"+self.dow()+"'"+","+ "'"+self.date()+"'"+","+"'"+ self.time+"'" + "," + "'"+self.task+"'" + "," + "'"+self.fls+"'" + ")"
         cursor.execute(sql)
         connection.commit()
 
