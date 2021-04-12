@@ -1,6 +1,7 @@
 from createDB import checkDB
 from entry_data import create_entry
 import os
+from sys import platform
 
 
 
@@ -35,6 +36,9 @@ class Menu:
             self.task_choice = 'First Level Support: ' + input('Type of Support: ')
             self.fls_status = '1'
             return self.task_choice
+        elif self.task_choice == '4':
+            self.task_choice = input('Your own task: ')
+            return self.task_choice
         else:
             return self.task_choice
 
@@ -56,8 +60,11 @@ class Menu:
             print('Show Database')
         elif self.menu_choice == '4' or 'exit':
             exit()
-        os.system('cls')
 
+        if platform == "linux" or platform == "linux2":
+            os.system('clear')
+        elif platform == "win32":
+            os.system('cls')
     def clear(self):
         os.system('cls')
 
